@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Recuperar contraseña</title>
+   
+    <link href="../styleReceta.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="/">RecetApp</a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item d-flex">
+                <a class="nav-link align-self-center text-white" href="/registro">Registrarme</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link align-self-center text-white" href="/ingreso">Ingresar</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+        <section id="seccion1">
+            <div class="row g-0 h-100">
+                <div class="col-lg-12 d-flex tituloReceta">
+                    <div class="content mx-auto align-self-center px-4 my-5">
+                        <h2 class="fw-bold">Cambiar contraseña.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container align-self-center formContainer">
+                <form class="form" method="POST" action="/recibirMail">
+            
+            <label class="form-label">Ingrese un e-mail al que le enviaremos el codigo de verificacion</label> <br>
+            <input class="form-control" name="mail" type="email"> <br>
+            <br>
+            
+                <button type="submit" class="btn btn-secondary">Enviar</button>
+                </form>
+            </div>
+            
+           <div th:if="${email}!=null" class="container align-self-center formContainer">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p th:text="${email}"></p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+        <form class="form" method="POST" action="/cambiarcontrasena">
+            
+            <label class="form-label">Email</label> <br>
+            <input class="form-control" name="mail" type="email"> <br>
+            <label class="form-label">Contraseña nueva</label> <br>
+            <input class="form-control" name="contrasena"  type="password"> <br>
+            <label class="form-label">Codigo de Verificacion</label> <br>
+            <input class="form-control" name="codigoIngresado"  type="number"> <br>
+            <br>
+            <button class="btn btn-secondary" type="submit">Guardar</button>
+                </form>
+      
+    </div>
+  </div>
+  
+             
+
+    </section>
+   
+    </main>
+    <footer class="footer bg-dark">
+    <div class="col-lg-12 col-md-12">
+        <small>2022. RecetApp. Todos los derechos reservados</small>
+    </div>
+</footer>
+
+<script crossorigin="anonymous"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

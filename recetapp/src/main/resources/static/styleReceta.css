@@ -1,0 +1,199 @@
+:root {
+    --primary: #E27227;
+    --dark: #222222;
+    --light: #ffffff;
+    --grey: #f5f5f5;
+}
+
+body {
+    color: var(--dark);
+}
+pre{
+    font-family: 'Poppins', sans-serif;
+}
+
+.tituloReceta{
+    text-align: center;
+    padding: 1rem 0rem;
+}
+
+#seccion1{
+    background-image: url(../imagenes/fondo1-01.png);
+    background-size: cover;
+}
+
+#seccion1RecetaconFotos{
+    background-color: #FFC248
+}
+
+#seccion1Perfil{
+    background-image: url(../imagenes/fondo3-03.png);
+    background-size: cover;
+}
+
+form input{
+  box-shadow: 0 0 5px var(--primary);
+}
+
+.navbarContainer{
+    padding-right: 0rem;
+}
+
+.navbar-nav{
+    padding-right: 0.5rem;
+}
+
+.footer{
+    text-align: center;
+    color: #f5f5f5;
+    padding: 1rem;
+}
+
+.btnComenzar{
+    background-color: #FFC248;
+    color: var(--dark);
+}
+
+.btnComenzar:hover {
+    background-color: var(--light);
+    border-color: var(--primary);
+    color: var(--dark);
+}
+
+.formContainer{
+    padding: 0.5rem;
+}
+
+.navbar{
+    background-color: var(--dark);
+}
+
+.contacto{
+    background-color: #FFC248;
+}
+
+.py-6 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.navbar .btn {
+    padding: .625rem 1.25rem !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.btn {
+    padding: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--light);
+    border-color: var(--primary);
+    color: var(--dark);
+}
+
+.btn-light {
+    background-color: var(--light);
+    color: var(--primary);
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-light {
+    background-color: var(--grey) !important;
+}
+
+.content {
+    max-width: 500px;
+}
+
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.call-to-action {
+    border-radius: 50px;
+}
+
+.call-to-action img {
+    max-width: 280px;
+}
+
+.cta-form {
+    max-width: 480px;
+}
+
+.cta-form .form-control {
+    min-height: 82px;
+}
+
+.cta-form .btn {
+    top: 12px;
+    right: 12px;
+}
+
+.seccion1Receta{
+    background-image: url(../imagenes/fondo3-03.png);
+    background-size: cover;
+}
+
+.seccion2Receta{
+    padding-bottom: 0.5rem;
+    margin: 10px;
+}
+
+.imagenChef{
+    width: 50px;
+    height: 50px;
+    margin:10px;
+}
+
+.comentarios{
+    padding: 5px;    
+}
+
+.cajaTextoComentario{
+    border: 1px solid var(--primary);
+}
+
+.nombreUsuario{
+    color: var(--dark)
+}
+
+.seccion1Lista{
+    background-image: url(../imagenes/fondol.jpg);
+    background-size: cover;
+}
+.alertaError{
+    margin: 0px 20px;
+}
+
+.nombreUsuario:hover {
+    color: var(--primary)
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        position: relative !important;
+    }
+    section {
+        height: unset;
+    }
+    .call-to-action img {
+        max-width: 100%;
+    }
+    .w-75 {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>RecetApp - Cargar Receta</title>
+                    <link rel="shortcut icon" href="../imagenes/logoTitle-02-01.ico" type="image/x-icon">
+
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+                              integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+                            <link href="../styleReceta.css" rel="stylesheet">
+
+                                </head>
+
+                                <body>
+                                    <header id="header">
+                                        <nav th:replace="fragmentos/navBar :: navbarReceta"></nav>
+                                    </header>
+
+                                    <main>
+                                        <section id="seccion1">
+                                            <div class="row g-0 h-100">
+                                                <div class="col-lg-12 d-flex tituloReceta">
+                                                    <div class="content mx-auto align-self-center px-4 my-5">
+                                                        <h2 class="fw-bold">A cargar la receta <span class="text-primary">!</span></h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div th:if="${error}!=null" class="container align-self-center formContainer">
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <p th:text="${error}"></p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                            <div class="container align-self-center formContainer">
+                                                <form class="form" action="/receta/cargarReceta" method="POST" enctype="multipart/form-data">
+                                                    <label class="form-label">Título</label> <br>
+                                                        <input class="form-control" type="text" name="nombre"> <br>
+                                                                <label class="form-label">Receta</label> <br>
+
+                                                                    <textarea class="form-control" type="text" name="cuerpoReceta" rows="10"
+                                                                              cols="40" placeholder="Ingredientes/Procedimiento/Tips"></textarea> <br>
+                                                                        <label class="form-label">Cargar imágenes</label> <br>
+                                                                            <input class="form-control" type="file" multiple name="foto"> <br>
+                                                                                    <label class="form-label">Tipo</label> <br>
+                                                                                        <select class="form-control" name="tipo">
+                                                                                            
+                                                                                            <option th:each="tip : ${tipo}" th:text="${tip.getNombre()}" th:value="${tip}"></option>
+                                                                                        </select>
+                                                                                        <label class="form-label">Origen</label> <br>
+                                                                                            <select class="form-control" name="origen">
+                                                                                               
+                                                                                                <option th:each="ori : ${origen}" th:text="${ori.getNombre()}" th:value="${ori}"></option>
+                                                                                            </select>
+                                                                                            <label class="form-label">Dificultad</label> <br>
+                                                                                                <p>1)fácil 2)intermedio 3)dificil </p>
+                                                                                                <input class="form-control" type="number" name="dificultad"> <br>
+                                                                                                        <label class="form-check-label">Tiempo de cocción (min)</label> <br>
+                                                                                                            <input class="form-control" type="number" name="tiempoCoccion"> <br>
+                                                                                                                    <br>
+
+                                                                                                                        <button class="btn btn-primary" type="submit">Cargar receta</button>
+                                                                                                                        </form>
+                                                                                                                        </div>
+                                                                                                                        </section>
+
+
+
+                                                                                                                        </main>
+
+                                                                                                                        <footer class="footer bg-dark">
+                                                                                                                            <div class="col-lg-12 col-md-12">
+                                                                                                                                <small>2022. RecetApp. Todos los derechos reservados</small>
+                                                                                                                            </div>
+                                                                                                                        </footer>
+
+                                                                                                                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                                                                                                                                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                                                                                                                        crossorigin="anonymous"></script>
+                                                                                                                        <script src="https://kit.fontawesome.com/ffec4ec2ed.js" crossorigin="anonymous"></script>
+
+                                                                                                                        </body>
+
+                                                                                                                        </html>

@@ -1,0 +1,108 @@
+/* STYLE DE MIPERIL */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/*=================== VARIABLES CSS ===============*/
+:root{
+    /* ======== COLORES ========*/
+    --first-color: #E27227;
+    --input-color: #80868B;
+    --border-color: #000000;
+
+    /*========== FUENTE Y TIPOGRAFIA */
+    --body-font: 'Roboto', sans-serif;
+    --normal-font-size: 1rem;
+    --small-font-sieze: .75rem;
+}
+
+/* ================ BASE =================*/
+*,::before,::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+.imagen{
+    background-image: url(../imagenes/Img4.jpg);
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    background-size: cover;
+}
+
+h1{
+    margin: 0;
+}
+
+.footer{
+    background-color: #222222;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+/*=================== FORM ================*/
+.l-form{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+
+
+.form{
+    background-color: #FFFFFF;
+    width: 385px;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+}
+
+.form_tittle{
+    font-weight: 400;
+    margin-bottom: 3rem;
+}
+
+.form_input:focus + .form_label{
+    top: -.5rem;
+    left: .8rem;
+    color: var(--first-color);
+    font-size: var(--small-font-sieze);
+    font-weight: 500;
+    z-index: 10;
+}
+
+.form_input:not(:placeholder-shown).form_input:not(:focus)+ .form_label{
+    top: -.5rem;
+    left: .8rem;
+    font-size: var(--small-font-sieze);
+    font-weight: 500;
+    z-index: 10;
+}
+
+.form_input:focus{
+    border: 1.5px solid var(--first-color);
+}
+
+.btn-default{
+    
+    margin-left: auto;
+    padding: .75rem 2rem;
+    outline: none;
+    border: none;
+    background-color: var(--first-color);
+    color: #fff;
+    font-size: var(--normal-font-size);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .3s;
+
+}

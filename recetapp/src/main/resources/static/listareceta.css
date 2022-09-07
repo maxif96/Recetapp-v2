@@ -1,0 +1,14 @@
+.seccion1ListaReceta{
+    background-image: url(../imagenes/fondol.jpg);
+    background-size: cover;
+}
+
+.footer{
+    background-color: #222222    ;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 0px;
+    padding-top: 0px;
+    bottom: 0%;
+    width: 100%;
+}

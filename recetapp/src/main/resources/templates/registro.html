@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="registro.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="stylesheet">
+    <title>RecetApp - Registro</title>
+    <link href="logoTitle-02-01.ico" rel="shortcut icon">
+</head>
+<body>
+<!-- <div class="lds-spinner loader" id= loader><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+-->
+</div>
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">RecetApp</a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler"
+                    data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ingreso">Ingresar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="l-form">
+
+    <form action="/registro" class="form" enctype="multipart/form-data"
+          method="post">
+        <h1 class="form_tittle">Registro</h1>
+        <p class="link alert alert-danger" th:if="${error != null}" th:text="${error}"></p>
+
+        <div class="form_div">
+            <input class="form_input" name="foto" placeholder="" type="file">
+            <label class="form_label" for=""> Elige una foto </label></div>
+
+        <div class="form_div">
+            <input class="form_input" name="nombre" placeholder="" type="text">
+            <label class="form_label" for="">Nombre</label>
+        </div>
+
+        <div class="form_div">
+            <input class="form_input" name="apodo" placeholder="" type="text">
+            <label class="form_label" for="">Apodo</label>
+        </div>
+
+        <div class="form_div">
+            <select class="form-control" name="categoria">
+                <option selected th:each="cat : ${categoria}" th:text="${cat.getNombre()}" th:value="${cat}"></option>
+            </select>
+        </div>
+
+
+        <div class="form_div">
+            <input class="form_input" name="mail" placeholder="" type="email">
+            <label class="form_label" for="">Email</label>
+        </div>
+
+        <div class="form_div">
+            <input class="form_input" name="contrasena" placeholder="" type="password">
+            <label class="form_label" for="">Contraseña</label>
+        </div>
+
+        <input class="form_butom" type="submit" value="Registrarme">
+
+        <p>¿Ya tienes una cuenta? <a class="link " href="/ingreso"> Iniciar sesion</a></p>
+    </form>
+</div>
+<footer class="footer bg-dark">
+    <div class="col-lg-12 col-md-12">
+        <small>2022. RecetApp. Todos los derechos reservados</small>
+    </div>
+</footer>
+<!--<script src="main.js"></script>-->
+</script>
+<script crossorigin="anonymous"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

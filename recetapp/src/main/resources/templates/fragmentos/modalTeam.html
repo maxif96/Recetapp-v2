@@ -1,0 +1,240 @@
+  <div th:fragment="teamModal" class="modal-dialog modal-dialog-centered">
+    <style>
+    .modal-content{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #FFC248;
+    flex-wrap: wrap;
+    padding-top: 2px;
+}
+
+    .card{
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+        padding: 5px;
+        background-color: #FFC248;
+        border: none;
+    }
+
+    .card .face{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: .5s;
+    }
+
+    .card .adelante{
+        transform: perspective(600px) rotateY(0deg);
+    }
+
+    .card .adelante img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card .adelante h3{
+        position: absolute;
+        bottom: 0;
+        width: 100;
+        height: 15px;
+        line-height: 15px;
+        color: #ffff;
+        background-color: #303030;
+        text-align: center;
+    }
+
+    .card .atras{
+        transform: perspective(600px) rotateY(180deg);
+        background-color: var(--primary);
+        padding: 15px;
+        color: #ffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .card .atras p{
+        font-size: 10px;
+    }
+
+    .card .atras h3{
+        font-size: 15px;
+        margin-top: 5px;
+    }
+
+    .card:hover .adelante{
+        transform: perspective(600px) rotateY(180deg);
+    }
+
+    .card:hover .atras{
+        transform: perspective(600px) rotateY(0deg);
+    }
+    </style>
+    
+    <div class="modal-content">
+
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             <h5 class="modal-title fw-bold" id="teamModalToggleLabel">Team RecetApp</h5>
+            <div class="row row-cols-sm-3">
+                <div class="col">
+                  <div class="card">
+                    <div class="face adelante">
+                        <img src="../imagenes/maxi.png" alt="">
+                    </div>
+                    <div class="face atras">
+                        <h3>
+                            Maxi
+                        </h3>
+                        <p>
+                            Backend<br>
+                            Comida fav: Fideos con salsa.
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <div class="face adelante">
+                        <img src="../imagenes/fabi.png" alt="">
+                    </div>
+                    <div class="face atras">
+                        <h3>
+                            Fabi
+                        </h3>
+                        <p>
+                            Backend<br>
+                            Comida fav: Ñoquis con salsa bolognesa.
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <div class="face adelante">
+                        <img src="../imagenes/lucas.png" alt="">
+                    </div>
+                    <div class="face atras">
+                        <h3>
+                            Lucas
+                        </h3>
+                        <p>
+                            Backend<br>
+                            Comida fav: Asado.
+                        </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="row row-cols-sm-3">
+
+                <div class="col">
+                  <div class="card">
+                    <div class="face adelante">
+                        <img src="../imagenes/agus.png" alt="">
+                    </div>
+                    <div class="face atras">
+                        <h3>
+                            Agus
+                        </h3>
+                        <p>
+                            Backend<br>
+                            Comida fav: Sopa.
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                      <div class="face adelante">
+                          <img src="../imagenes/mili.png" alt="">
+                      </div>
+                      <div class="face atras">
+                          <h3>
+                              Mili
+                          </h3>
+                          <p>
+                              Backend<br>
+                              Comida fav: Canelones.
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="face adelante">
+                          <img src="../imagenes/ian.png" alt="">
+                      </div>
+                      <div class="face atras">
+                          <h3>
+                              Ian
+                          </h3>
+                          <p>
+                              Frontend<br>
+                              Comida fav: Hamburguesa.
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row row-cols-sm-3">
+                  <div class="col">
+                    <div class="card">
+                      <div class="face adelante">
+                          <img src="../imagenes/augusto.png" alt="">
+                      </div>
+                      <div class="face atras">
+                          <h3>
+                              Augusto
+                          </h3>
+                          <p>
+                              Frontend<br>
+                              Comida fav: Milanesas a la napolitana.
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="face adelante">
+                          <img src="../imagenes/franco.png" alt="">
+                      </div>
+                      <div class="face atras">
+                          <h3>
+                              Franco
+                          </h3>
+                          <p>
+                              Frontend<br>
+                              Comida fav: Tarta jamón y queso.
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="face adelante">
+                          <img src="../imagenes/sabri.png" alt="">
+                      </div>
+                      <div class="face atras">
+                          <h3>
+                              Sabri
+                          </h3>
+                          <p>
+                              Frontend<br>
+                              Comida fav: Panchos.
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+        </div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../listareceta.css">
+        <link rel="stylesheet" href="../styleReceta.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>RecetApp - Lista de Recetas</title>
+    <link href="../imagenes/logoTitle-02-01.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <nav th:replace="fragmentos/navBar :: navbarReceta"></nav>
+    </header>
+    
+    <main>
+        <section class="seccion1Lista">
+            <div class="row">
+                <div class="col-lg-12 tituloReceta" style="margin-bottom: 15px; padding-bottom: 5px">
+                    <div class="content mx-auto px-4 my-5">
+                        <div th:if="${todas}!=null" class="container formContainer">
+                            <h2 th:text="${todas}" style="padding:0px; background-color:#E27227; border-radius: 10px"></h2>
+            </div>
+            <div th:if="${delUsuario}!=null" class="container formContainer">
+                <h2 th:text="${delUsuario}" style="padding:0px; background-color:#E27227; border-radius: 10px"></h2>
+            </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="container table-container bg-light" style="border-radius:20px">
+                <table class="table">
+            <thead class="table table-striped table-border" style="border-radius:20px">
+            <tr>
+                <th>Nombre</th>
+                <th>Origen</th>
+                <th>Dificultad</th>
+                <th>Tiempo de cocción</th>
+                <th>Tipo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="recet : ${nombreReceta}">
+                <td>
+                    <a th:text="${recet.nombre}" th:href="@{/receta/{id}(id=${recet.id})}" style="color:#E27227"></a>
+                </td>
+                <td th:text="${recet.origen}">origen</td>
+                <td th:text="${recet.dificultad}">dificultad</td>
+                <td th:text="${recet.tiempoCoccion}">tiempo de coccion</td>
+                <td th:text="${recet.tipo}">tipo</td>
+            </tr>
+            </tbody>
+        </table>
+            </div>
+        </section>
+        
+   
+
+    </main>
+
+    <footer class="footer bg-dark">
+    <div class="col-lg-12 col-md-12">
+        <small>2022. RecetApp. Todos los derechos reservados</small>
+    </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+</html>
