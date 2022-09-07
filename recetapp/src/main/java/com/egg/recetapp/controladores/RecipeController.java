@@ -1,18 +1,13 @@
 package com.egg.recetapp.controladores;
 
-import com.egg.recetapp.entidades.Foto;
-import com.egg.recetapp.entidades.Receta;
-import com.egg.recetapp.entidades.Usuario;
-import com.egg.recetapp.enumeracion.Origen;
-import com.egg.recetapp.enumeracion.Tipo;
+import com.egg.recetapp.entidades.Recipe;
+import com.egg.recetapp.entidades.Users;
+import com.egg.recetapp.enumeracion.Origin;
+import com.egg.recetapp.enumeracion.Type;
 import com.egg.recetapp.excepciones.ErrorServicio;
-import com.egg.recetapp.servicios.CalificacionServicio;
-import com.egg.recetapp.servicios.RecetaServicio;
+import com.egg.recetapp.servicios.ScoreService;
+import com.egg.recetapp.servicios.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,25 +16,24 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/receta")
-public class RecetaControlador {
+public class RecipeController {
 
     @Autowired
-    private RecetaServicio rs;
+    private RecipeService rs;
     @Autowired
-    private CalificacionServicio cs;
+    private ScoreService cs;
 
 
     //    CARGAR RECETA
     @PreAuthorize("hasAnyRole('USUARIO')")
     @GetMapping("/cargarReceta")
     public String cargarReceta(ModelMap Modelo) {
-        Modelo.addAttribute("origen", Origen.values());
-        Modelo.addAttribute("tipo", Tipo.values());
+        Modelo.addAttribute("origen", Origin.values());
+        Modelo.addAttribute("tipo", Type.values());
 
         return "cargarReceta";
     }
@@ -47,21 +41,21 @@ public class RecetaControlador {
     @PostMapping("/cargarReceta")
     public String cargarReceta(@RequestParam String nombre,
                                @RequestParam String cuerpoReceta,
-                               @RequestParam Origen origen,
+                               @RequestParam Origin origin,
                                @RequestParam(defaultValue = "0") Integer dificultad,
                                @RequestParam List<MultipartFile> foto,
-                               @RequestParam Tipo tipo,
+                               @RequestParam Type type,
                                @RequestParam(defaultValue = "0") Integer tiempoCoccion,
                                HttpSession session,
                                ModelMap modelMap) throws ErrorServicio, IOException {
-        Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
+        Users usersLogueado = (Users) session.getAttribute("usuariosession");
         try {
-            Receta recetaCreada = rs.crearReceta(nombre, cuerpoReceta, origen, dificultad, foto, usuarioLogueado, tipo, tiempoCoccion);
-            return "redirect:/receta/" + recetaCreada.getId().toString();
+            Recipe recipeCreada = rs.crearReceta(nombre, cuerpoReceta, origin, dificultad, foto, usersLogueado, type, tiempoCoccion);
+            return "redirect:/receta/" + recipeCreada.getId().toString();
         } catch (ErrorServicio e) {
             modelMap.put("error", e.getMessage());
-            modelMap.addAttribute("origen", Origen.values());
-            modelMap.addAttribute("tipo", Tipo.values());
+            modelMap.addAttribute("origin", Origin.values());
+            modelMap.addAttribute("type", Type.values());
             return "cargarReceta";
         }
 
@@ -70,11 +64,11 @@ public class RecetaControlador {
     @GetMapping("/modificarReceta/{id}")
     public String modificarReceta(@PathVariable Long id,
                                   ModelMap modelo, HttpSession session) throws ErrorServicio {
-        Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
-        if (rs.buscarRecetaPorId(id).getUsuario().getId().equals(usuarioLogueado.getId())) {
+        Users usersLogueado = (Users) session.getAttribute("usuariosession");
+        if (rs.buscarRecetaPorId(id).getUsers().getId().equals(usersLogueado.getId())) {
             modelo.addAttribute("recet", rs.buscarRecetaPorId(id));
-            modelo.addAttribute("origen", Origen.values());
-            modelo.addAttribute("tipo", Tipo.values());
+            modelo.addAttribute("origen", Origin.values());
+            modelo.addAttribute("tipo", Type.values());
             return "modificarReceta.html";
         } else {
             return "redirect:/receta/" + id.toString();
@@ -86,17 +80,17 @@ public class RecetaControlador {
                                   @PathVariable Long id,
                                   @RequestParam String nombre,
                                   @RequestParam String cuerpoReceta,
-                                  @RequestParam Origen origen,
+                                  @RequestParam Origin origin,
                                   @RequestParam Integer dificultad,
                                   @RequestParam List<MultipartFile> foto,
-                                  @RequestParam Tipo tipo,
+                                  @RequestParam Type type,
                                   @RequestParam Integer tiempoCoccion,
                                   HttpSession session
     ) throws ErrorServicio {
-        Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
+        Users usersLogueado = (Users) session.getAttribute("usuariosession");
         try {
-            if (rs.buscarRecetaPorId(id).getUsuario().getId().equals(usuarioLogueado.getId())) {
-                rs.modificarReceta(id, nombre, cuerpoReceta, origen, dificultad, foto, tipo, usuarioLogueado, tiempoCoccion);
+            if (rs.buscarRecetaPorId(id).getUsers().getId().equals(usersLogueado.getId())) {
+                rs.modificarReceta(id, nombre, cuerpoReceta, origin, dificultad, foto, type, usersLogueado, tiempoCoccion);
                 modelo.put("exito", "la receta se ha modificado con exito");
             }
 
@@ -109,10 +103,10 @@ public class RecetaControlador {
 
     @GetMapping("/eliminarReceta/{id}")
     public String eliminarReceta(ModelMap modelo, @PathVariable Long id, HttpSession session) throws Exception {
-        Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
-        if (rs.buscarRecetaPorId(id).getUsuario().getId().equals(usuarioLogueado.getId())) {
+        Users usersLogueado = (Users) session.getAttribute("usuariosession");
+        if (rs.buscarRecetaPorId(id).getUsers().getId().equals(usersLogueado.getId())) {
             modelo.addAttribute("recet", rs.buscarRecetaPorId(id));
-            rs.eliminarReceta(usuarioLogueado.getId(), id);
+            rs.eliminarReceta(usersLogueado.getId(), id);
 
             return "redirect:/receta/";
         } else {
@@ -125,13 +119,13 @@ public class RecetaControlador {
     @PreAuthorize("hasAnyRole('USUARIO')")
     @GetMapping("/{id}")
     public String mostrarRecetaPorId(ModelMap modelo, @PathVariable Long id, HttpSession session) throws ErrorServicio {
-        Receta receta = rs.buscarRecetaPorId(id);
-        Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
-        modelo.addAttribute("usuarioLogueadoId", usuarioLogueado.getId());
-        modelo.addAttribute("receta", receta);
+        Recipe recipe = rs.buscarRecetaPorId(id);
+        Users usersLogueado = (Users) session.getAttribute("usuariosession");
+        modelo.addAttribute("usuarioLogueadoId", usersLogueado.getId());
+        modelo.addAttribute("recipe", recipe);
         modelo.addAttribute("calificaciones", cs.listaComentariosPorRecetaId(id));
-        modelo.addAttribute("foto",receta.getFoto());
-        return "/receta";
+        modelo.addAttribute("foto", recipe.getPhoto());
+        return "/recipe";
     }
 
     //    LISTA RECETAS
@@ -153,10 +147,10 @@ public class RecetaControlador {
     @GetMapping("/listarPorUsuario")
     public String listarPorUsuario(ModelMap modelMap, HttpSession session) throws ErrorServicio {
 
-        Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
+        Users usersLogueado = (Users) session.getAttribute("usuariosession");
         
         modelMap.put("delUsuario","Mis recetas");
-        modelMap.addAttribute("nombreReceta", rs.listaPorUsuario(usuarioLogueado.getId()));
+        modelMap.addAttribute("nombreReceta", rs.listaPorUsuario(usersLogueado.getId()));
         return "listaRecetas";
     }
 

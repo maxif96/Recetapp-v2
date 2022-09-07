@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
  * @author Fabi
  */
 @Service
-public class NotificacionServicio {
+public class MailService {
     @Autowired
     private JavaMailSender MS;
     
     @Async//el hilo de la ejecucion del programa no se detiene,manda el email paralelamente,mientras el programa se sigue ejecutando
-    public void enviar(String cuerpo,String titulo,String mail){
+    public void send(String cuerpo, String titulo, String mail){
         SimpleMailMessage mensaje= new SimpleMailMessage ();//es un objeto de mailSender
         mensaje.setTo(mail);
         mensaje.setFrom("maxirecetapp99@outlook.com.ar");

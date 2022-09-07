@@ -5,10 +5,9 @@
  */
 package com.egg.recetapp.controladores;
 
-import com.egg.recetapp.entidades.Usuario;
+import com.egg.recetapp.entidades.Users;
 import com.egg.recetapp.excepciones.ErrorServicio;
-import com.egg.recetapp.servicios.CalificacionServicio;
-import javax.servlet.http.HttpSession;
+import com.egg.recetapp.servicios.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -17,23 +16,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
- *
  * @author Fabi
  */
- @PreAuthorize("hasAnyRole('USUARIO')")
+@PreAuthorize("hasAnyRole('USER')")
 @Controller
-@RequestMapping("/calificacion")
-public class CalificacionControlador {
+@RequestMapping("/score")
+public class ScoreController {
 
-     @Autowired
-    private CalificacionServicio cs;
+    @Autowired
+    private ScoreService scoreService;
+
     @PostMapping("/{id}")
-    public String calificar(@RequestParam String puntuacion, @PathVariable Long id,HttpSession session, @RequestParam String comentario) throws ErrorServicio {
-        Integer puntuacionn = Integer.parseInt (puntuacion);
+    public String score(@RequestParam String score, @PathVariable Long id, HttpSession session, @RequestParam String body) throws ErrorServicio {
+        Integer scoreToShow = Integer.parseInt(score);
 
-       Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
-        cs.guardarCalificar(puntuacionn, id, usuarioLogueado, comentario);
+        Users LoguedUser = (Users) session.getAttribute("usuariosession");
+        scoreService.guardarCalificar(scoreToShow, id, LoguedUser, body);
         return "redirect:/receta/" + id.toString();
     }
 }

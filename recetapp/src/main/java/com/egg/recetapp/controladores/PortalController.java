@@ -1,8 +1,8 @@
 package com.egg.recetapp.controladores;
 
-import com.egg.recetapp.enumeracion.Categoria;
+import com.egg.recetapp.enumeracion.Category;
 import com.egg.recetapp.excepciones.ErrorServicio;
-import com.egg.recetapp.servicios.UsuarioServicio;
+import com.egg.recetapp.servicios.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,40 +17,39 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("")
-public class PortalControlador {
+public class PortalController {
 
     @Autowired
-    private UsuarioServicio us;
+    private UserService userService;
 
     @GetMapping("/ingreso")
     public String ingreso() {
         return "ingreso";
     }
 
-    @GetMapping("/registro")
-    public String registro(ModelMap modelo) {
-        modelo.addAttribute("categoria", Categoria.values());
-        return "registro";
+    @GetMapping("/register")
+    public String register(ModelMap model) {
+        model.addAttribute("categoria", Category.values());
+        return "register";
     }
 
-    //metodo para crear el usuario
-    @PostMapping("/registro")//cuando entra a la barra del servidor ejecuta el metodo
-    public String guardarUsuario(ModelMap modelo,
-                                 @RequestParam String nombre,
-                                 @RequestParam String apodo,
-                                 @RequestParam Categoria categoria,
-                                 @RequestParam String mail,
-                                 @RequestParam String contrasena,
-                                 @RequestParam MultipartFile foto) throws Exception {
+    @PostMapping("/register")
+    public String save (ModelMap model,
+                       @RequestParam String name,
+                       @RequestParam String nickName,
+                       @RequestParam Category category,
+                       @RequestParam String mail,
+                       @RequestParam String password,
+                       @RequestParam MultipartFile photo) throws Exception {
         try {
-            us.crearUsuario(nombre, apodo, categoria, mail, contrasena, foto);
+            userService.createUser(name, nickName, category, mail, password, photo);
             return "ingreso";
         } catch (Exception e) {
-            modelo.addAttribute("categoria", Categoria.values());
-            modelo.put("error", e.getMessage());
-            return "registro";
+            model.addAttribute("category", Category.values());
+            model.put("error", e.getMessage());
+            return "register";
         }
-        //una vez que se registre que le devuelva la vista para loguearse
+
     }
 
     @GetMapping("/cambiarcontrasena")
@@ -60,7 +59,7 @@ public class PortalControlador {
 
     @PostMapping("/recibirMail")
     public String mailVerificacion(@RequestParam String mail, HttpSession session, ModelMap modelo) throws ErrorServicio {
-        int codigoDeRecuperacion = us.enviar(mail);
+        int codigoDeRecuperacion = userService.enviar(mail);
         session.setAttribute("codigoDeRecuperacion", codigoDeRecuperacion);
         modelo.put("email", "Email de recuperación enviado!");
 
@@ -70,7 +69,7 @@ public class PortalControlador {
     @PostMapping("/cambiarcontrasena")
     public String cambiarContraseña(HttpSession session, @RequestParam Integer codigoIngresado, @RequestParam String contrasena, @RequestParam String mail) throws ErrorServicio, IOException {
         if (codigoIngresado == (int) session.getAttribute("codigoDeRecuperacion")) {//esta linea de codigo tira null
-            us.cambiarContraseña(codigoIngresado, contrasena, mail);
+            userService.cambiarContraseña(codigoIngresado, contrasena, mail);
         }
         return "/ingreso";
     }

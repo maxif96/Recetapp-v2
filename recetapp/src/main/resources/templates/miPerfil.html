@@ -21,38 +21,38 @@
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <form action="/receta/listaRecetasPorNombre" class="d-flex" method="POST">
-                <input class="form-control me-2" type="text" name="nombre" placeholder="buscar receta">
+            <form action="/recipe/listaRecetasPorNombre" class="d-flex" method="POST">
+                <input class="form-control me-2" type="text" name="nombre" placeholder="buscar recipe">
                 <button class="btn" type="submit" style="background-color:#E27227">Buscar</button>
             </form>
           </div>
         </nav>
     </header>
     <div class="l-form">
-      <form action="" class="form" th:switch="${usuario.estaActivo}">
+      <form action="" class="form" th:switch="${users.estaActivo}">
         <h1 class="form_tittle">Hola 👋🏼</h1>
        
-        <div class="card" style="width: 18rem;"  th:each="usuar : ${usuario}">
+        <div class="card" style="width: 18rem;"  th:each="usuar : ${users}">
           <div th:if="${session.usuariosession} != null">
-            <img style="width: 35%;" th:src="${'/usuario/foto/'+ session.usuariosession.id}" alt="no se pudo cargar la foto">
+            <img style="width: 35%;" th:src="${'/users/photo/'+ session.usuariosession.id}" alt="no se pudo cargar la photo">
         </div>
           <div class="card-body">
             <h2 class="card-title" th:text="*{usuar.nombre}"></h2>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item" th:text="${usuar.apodo}"></li>
-            <li class="list-group-item" th:text="${usuar.categoria}"></li>
+            <li class="list-group-item" th:text="${usuar.category}"></li>
             <li class="list-group-item" th:text="${usuar.mail}"></li>
           </ul>
 
         </div> <br>
         
-        <a href="/receta/cargarReceta" class="btn-sm">Cargar receta</a>
-        <a class="btn-sm" href="/receta/listarPorUsuario">Ver mis recetas</a>
+        <a href="/recipe/cargarReceta" class="btn-sm">Cargar recipe</a>
+        <a class="btn-sm" href="/recipe/listarPorUsuario">Ver mis recetas</a>
 
         <div class="d-grid gap-2 d-md-block botonesAbajo"> 
-          <a class="btn-default" th:href="@{/usuario/modificar-usuario/{id}(id=${usuario.id})}">Editar Perfil </a>
-          <a class="btn-default" th:href="@{/usuario/dar-de-baja/{id}(id=${usuario.id})}">Eliminar Perfil</a>
+          <a class="btn-default" th:href="@{/users/modificar-users/{id}(id=${users.id})}">Editar Perfil </a>
+          <a class="btn-default" th:href="@{/users/dar-de-baja/{id}(id=${users.id})}">Eliminar Perfil</a>
         </div>
 
       </form>
@@ -69,5 +69,5 @@
 </body>
 </html>
 
-<!--<a href="/cargarReceta"><strong>Cargar receta</strong></a><br>--> 
+<!--<a href="/cargarReceta"><strong>Cargar recipe</strong></a><br>-->
 <!--<a href="/listaRecetas"><strong>Ver mis recetas</strong></a><br>-->

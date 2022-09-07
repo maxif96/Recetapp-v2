@@ -46,12 +46,12 @@
             <tbody>
             <tr th:each="recet : ${nombreReceta}">
                 <td>
-                    <a th:text="${recet.nombre}" th:href="@{/receta/{id}(id=${recet.id})}" style="color:#E27227"></a>
+                    <a th:text="${recet.nombre}" th:href="@{/recipe/{id}(id=${recet.id})}" style="color:#E27227"></a>
                 </td>
-                <td th:text="${recet.origen}">origen</td>
+                <td th:text="${recet.origin}">origin</td>
                 <td th:text="${recet.dificultad}">dificultad</td>
                 <td th:text="${recet.tiempoCoccion}">tiempo de coccion</td>
-                <td th:text="${recet.tipo}">tipo</td>
+                <td th:text="${recet.type}">type</td>
             </tr>
             </tbody>
         </table>

@@ -13,9 +13,9 @@
                         🍽️
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/usuario/miperfil">Mi Perfil</a></li>
-                        <li><a class="dropdown-item" href="/receta/listarPorUsuario">Ver mis recetas</a></li>
-                        <li><a class="dropdown-item" href="/receta/">Ver todas las recetas</a></li>
+                        <li><a class="dropdown-item" href="/users/miperfil">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="/recipe/listarPorUsuario">Ver mis recetas</a></li>
+                        <li><a class="dropdown-item" href="/recipe/">Ver todas las recetas</a></li>
                     </ul>
                 <li class="nav-item d-flex">
                     <a class="nav-link align-self-center text-white" href="/logout">Salir</a>
@@ -23,8 +23,8 @@
 
 
             </ul>
-            <form action="/receta/listaRecetasPorNombre" class="d-flex" method="POST">
-                <input class="form-control me-2" type="text" name="nombre" placeholder="buscar receta">
+            <form action="/recipe/listaRecetasPorNombre" class="d-flex" method="POST">
+                <input class="form-control me-2" type="text" name="nombre" placeholder="buscar recipe">
                 <button class="btn" type="submit" style="background-color:#E27227">Buscar</button>
             </form>
         </div>

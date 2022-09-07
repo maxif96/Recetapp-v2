@@ -1,6 +1,6 @@
 package com.egg.recetapp.enumeracion;
 
-public enum Origen {
+public enum Origin {
 
     ARMENIO("Armenio"),
     CHINA("China"),
@@ -22,7 +22,7 @@ public enum Origen {
 
     private String nombre;
 
-    private Origen(String nombre) {
+    private Origin(String nombre) {
         this.nombre = nombre;
     }
 

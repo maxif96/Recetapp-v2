@@ -36,17 +36,17 @@
             </div>
         </div>
         <div class="container align-self-center formContainer">
-        <form class="formUsuario" enctype="multipart/form-data" method="POST" th:action="@{/usuario/{id}(id=${usuario.id})}"
-              th:object="${usuario}">
+        <form class="formUsuario" enctype="multipart/form-data" method="POST" th:action="@{/users/{id}(id=${users.id})}"
+              th:object="${users}">
             <label class="form-label">Nombre</label> <br>
             <input class="form-control" name="nombre" th:field="*{nombre}" type="text"> <br>
             <label class="form-label">Apodo</label> <br>
             <input class="form-control" name="apodo" th:field="*{apodo}" type="text"> <br>
-            <label class="form-label">Una foto bonita</label> <br>
-            <input class="form-control" name="foto" th:field="*{foto}" type="file"> <br>
+            <label class="form-label">Una photo bonita</label> <br>
+            <input class="form-control" name="photo" th:field="*{photo}" type="file"> <br>
             <label class="form-label">Categoría</label> <br>
-            <select class="form-control" name="categoria">
-                <option th:each="cat : ${categoria}" th:text="${cat.getNombre()}" th:value="${cat}"></option>
+            <select class="form-control" name="category">
+                <option th:each="cat : ${category}" th:text="${cat.getNombre()}" th:value="${cat}"></option>
             </select>
             <br>
             <label class="form-label text-white">Email</label> <br>

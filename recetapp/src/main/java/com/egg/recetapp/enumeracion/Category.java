@@ -1,6 +1,6 @@
 package com.egg.recetapp.enumeracion;
 
-public enum Categoria {
+public enum Category {
 
 
     CHEF("Chef"),
@@ -11,7 +11,7 @@ public enum Categoria {
 
     private String nombre;
 
-    private Categoria(String nombre) {
+    private Category(String nombre) {
         this.nombre = nombre;
     }
 

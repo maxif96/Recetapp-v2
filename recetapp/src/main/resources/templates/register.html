@@ -42,8 +42,8 @@
         <p class="link alert alert-danger" th:if="${error != null}" th:text="${error}"></p>
 
         <div class="form_div">
-            <input class="form_input" name="foto" placeholder="" type="file">
-            <label class="form_label" for=""> Elige una foto </label></div>
+            <input class="form_input" name="photo" placeholder="" type="file">
+            <label class="form_label" for=""> Elige una photo </label></div>
 
         <div class="form_div">
             <input class="form_input" name="nombre" placeholder="" type="text">
@@ -56,8 +56,8 @@
         </div>
 
         <div class="form_div">
-            <select class="form-control" name="categoria">
-                <option selected th:each="cat : ${categoria}" th:text="${cat.getNombre()}" th:value="${cat}"></option>
+            <select class="form-control" name="category">
+                <option selected th:each="cat : ${category}" th:text="${cat.getNombre()}" th:value="${cat}"></option>
             </select>
         </div>
 

@@ -1,10 +1,8 @@
 package com.egg.recetapp.seguridad;
 
-// ****** CONFIGURACIÓN DE LA SEGURIDAD DE NUESTRA PAGINA WEB ******//
 
-import com.egg.recetapp.servicios.UsuarioServicio;
+import com.egg.recetapp.servicios.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,22 +12,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-// Debemos crear una  clase, en este caso se llama SeguridadConfiguracion
-// la cual tendra las modificaciones de la configuración que ya inyecta
-// Spring por defecto.
-
-@Configuration
+@org.springframework.context.annotation.Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
+public class Configuration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public UsuarioServicio usuarioServicio;
+    public UserService userService;
 
     @Autowired
     public void globalConfigure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(usuarioServicio)
+                .userDetailsService(userService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
     

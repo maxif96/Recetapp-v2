@@ -24,7 +24,7 @@
                                             <div class="row g-0 h-100">
                                                 <div class="col-lg-12 d-flex tituloReceta">
                                                     <div class="content mx-auto align-self-center px-4 my-5">
-                                                        <h2 class="fw-bold">A cargar la receta <span class="text-primary">!</span></h2>
+                                                        <h2 class="fw-bold">A cargar la recipe <span class="text-primary">!</span></h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -35,7 +35,7 @@
                                                 </div>
                                             </div>
                                             <div class="container align-self-center formContainer">
-                                                <form class="form" action="/receta/cargarReceta" method="POST" enctype="multipart/form-data">
+                                                <form class="form" action="/recipe/cargarReceta" method="POST" enctype="multipart/form-data">
                                                     <label class="form-label">Título</label> <br>
                                                         <input class="form-control" type="text" name="nombre"> <br>
                                                                 <label class="form-label">Receta</label> <br>
@@ -43,16 +43,16 @@
                                                                     <textarea class="form-control" type="text" name="cuerpoReceta" rows="10"
                                                                               cols="40" placeholder="Ingredientes/Procedimiento/Tips"></textarea> <br>
                                                                         <label class="form-label">Cargar imágenes</label> <br>
-                                                                            <input class="form-control" type="file" multiple name="foto"> <br>
+                                                                            <input class="form-control" type="file" multiple name="photo"> <br>
                                                                                     <label class="form-label">Tipo</label> <br>
-                                                                                        <select class="form-control" name="tipo">
+                                                                                        <select class="form-control" name="type">
                                                                                             
-                                                                                            <option th:each="tip : ${tipo}" th:text="${tip.getNombre()}" th:value="${tip}"></option>
+                                                                                            <option th:each="tip : ${type}" th:text="${tip.getNombre()}" th:value="${tip}"></option>
                                                                                         </select>
                                                                                         <label class="form-label">Origen</label> <br>
-                                                                                            <select class="form-control" name="origen">
+                                                                                            <select class="form-control" name="origin">
                                                                                                
-                                                                                                <option th:each="ori : ${origen}" th:text="${ori.getNombre()}" th:value="${ori}"></option>
+                                                                                                <option th:each="ori : ${origin}" th:text="${ori.getNombre()}" th:value="${ori}"></option>
                                                                                             </select>
                                                                                             <label class="form-label">Dificultad</label> <br>
                                                                                                 <p>1)fácil 2)intermedio 3)dificil </p>
@@ -61,7 +61,7 @@
                                                                                                             <input class="form-control" type="number" name="tiempoCoccion"> <br>
                                                                                                                     <br>
 
-                                                                                                                        <button class="btn btn-primary" type="submit">Cargar receta</button>
+                                                                                                                        <button class="btn btn-primary" type="submit">Cargar recipe</button>
                                                                                                                         </form>
                                                                                                                         </div>
                                                                                                                         </section>

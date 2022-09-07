@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="container align-self-center formContainer">
-            <form class="form" th:action="@{/receta/modificar/{id}(id=${recet.id})}" 
+            <form class="form" th:action="@{/recipe/modificar/{id}(id=${recet.id})}"
                   method="POST" enctype="multipart/form-data" th:object="${recet}">
            
                     <label class="form-label">Título</label> <br>
@@ -37,16 +37,16 @@
                     <textarea class="form-control" type="text" name="cuerpoReceta" rows="10"
                         cols="40" th:field="*{cuerpoReceta}"></textarea> <br>
                     <label class="form-label">Cargar imágenes</label> <br>
-                    <input class="form-control" type="file" multiple name="foto"> <br>
+                    <input class="form-control" type="file" multiple name="photo"> <br>
                     <label class="form-label">Tipo</label> <br>
-                    <select class="form-control" name="tipo">
-                        <option selected th:value="*{tipo}" th:text="*{tipo}"></option>
-                        <option th:each="tip : ${tipo}" th:text="${tip.getNombre()}" th:value="${tip}"></option>
+                    <select class="form-control" name="type">
+                        <option selected th:value="*{type}" th:text="*{type}"></option>
+                        <option th:each="tip : ${type}" th:text="${tip.getNombre()}" th:value="${tip}"></option>
                     </select>
                     <label class="form-label">Origen</label> <br>
-                    <select class="form-control" name="origen">
-                        <option selected th:value="*{origen}" th:text="*{origen}"></option>
-                        <option th:each="ori : ${origen}" th:text="${ori.getNombre()}" th:value="${ori}"></option>
+                    <select class="form-control" name="origin">
+                        <option selected th:value="*{origin}" th:text="*{origin}"></option>
+                        <option th:each="ori : ${origin}" th:text="${ori.getNombre()}" th:value="${ori}"></option>
                     </select>
                     <label class="form-label">Dificultad</label> <br>
                     <p>1) si es fácil 2)intermedio 3)dificil </p>

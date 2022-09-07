@@ -22,14 +22,14 @@
             <div class="row" >
                 <div class="col-lg-6">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner" th:each=" fotouno : ${foto}">
+  <div class="carousel-inner" th:each=" fotouno : ${photo}">
       <div class="carousel-item active">
       <div class="card d-block">
-  <img  th:src="@{/foto/{id}(id=${fotouno.id})}" class="card-img-top" alt="...">
+  <img  th:src="@{/photo/{id}(id=${fotouno.id})}" class="card-img-top" alt="...">
 </div>
       </div>
       <!--<div class="carousel-item active">
-      <img  th:src="@{/foto/{id}(id=${fotouno.id})}" class="card-img-top" alt="...">
+      <img  th:src="@{/photo/{id}(id=${fotouno.id})}" class="card-img-top" alt="...">
     </div>-->
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -44,8 +44,8 @@
                    <!--<div id="carouselExampleSlidesOnly" class="content mx-auto px-4 my-5 carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-   <div th:each=" fotouno : ${foto}">
-                        <img  th:src="@{/foto/{id}(id=${fotouno.id})}">
+   <div th:each=" fotouno : ${photo}">
+                        <img  th:src="@{/photo/{id}(id=${fotouno.id})}">
                     </div>
 
     </div>
@@ -56,24 +56,24 @@
                 <div class="col-lg-6">
                   <div class="align-self-center my-5 px-4">
                     <div th:object="${usuarioLogueadoId}">
-                        <div th:each="recet : ${receta}">
+                        <div th:each="recet : ${recipe}">
                             <h2 class="display-4 fw-bold mb-5" type="text" name="nombre" th:text="${recet.nombre}" style="padding-bottom: 5px"><span class="text-primary">.</span></h2>
                     <div class="container align-self-center formContainer">
                     <p>Receta:</p>
                     <pre type="text" name="cuerpoReceta" th:text="${recet.cuerpoReceta}"></pre>
                     <p type="number" name="tiempoCoccion" th:text="${recet.tiempoCoccion} + ' min.'"></p>
                     <p type="number" name="dificultad" th:text="${recet.dificultad}"></p>
-                    <p type="text" name="tipo" th:text="${recet.tipo}"></p>
-                    <p type="text" name="origen" th:text="${recet.origen}"></p>
-                    <p type="text" name="usuario" th:text="${recet.usuario.nombre}" class="nombreUsuario"></p>
+                    <p type="text" name="type" th:text="${recet.type}"></p>
+                    <p type="text" name="origin" th:text="${recet.origin}"></p>
+                    <p type="text" name="users" th:text="${recet.users.nombre}" class="nombreUsuario"></p>
                     </div>     
-                     <div th:if="${usuarioLogueadoId == recet.usuario.id} ">
+                     <div th:if="${usuarioLogueadoId == recet.users.id} ">
                                     <a class="btn btn-primary mb-5"
-                                       th:href="@{/receta/modificarReceta/{id}(id=${recet.id})}">
-                                        Modificar receta</a>
+                                       th:href="@{/recipe/modificarReceta/{id}(id=${recet.id})}">
+                                        Modificar recipe</a>
                          <a class="btn btn-danger mb-5" data-bs-toggle="modal" data-bs-target="#eliminarModal" type="button">
-                                       <!--th:href="@{/receta/eliminarReceta/{id}(id=${recet.id})}">-->
-                                        Eliminar receta</a>
+                                       <!--th:href="@{/recipe/eliminarReceta/{id}(id=${recet.id})}">-->
+                                        Eliminar recipe</a>
                                 </div>
                         <!--Modal de eliminar-->
 
@@ -81,17 +81,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Eliminar receta?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Eliminar recipe?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
           <div class="alert alert-danger" role="alert">
-  La receta se eliminará.
+  La recipe se eliminará.
 </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-        <a type="button" class="btn btn-danger" th:href="@{/receta/eliminarReceta/{id}(id=${recet.id})}">Eliminar</a>
+        <a type="button" class="btn btn-danger" th:href="@{/recipe/eliminarReceta/{id}(id=${recet.id})}">Eliminar</a>
       </div>
     </div>
   </div>
@@ -106,8 +106,8 @@
 
  
     <section class="seccion2Receta">
-        <div class="cajaComentario container-fluid" th:each="recet : ${receta}">
-            <form method="POST" th:action="@{/calificacion/{id}(id=${recet.id})}">
+        <div class="cajaComentario container-fluid" th:each="recet : ${recipe}">
+            <form method="POST" th:action="@{/score/{id}(id=${recet.id})}">
                 <label>Deja tu comentario</label> <br>
                 <input name="id" th:value="${recet.id}" type="hidden">
                 <textarea class="form-control cajaTextoComentario" cols="10" name="comentario" rows="5"></textarea> <br>
@@ -122,14 +122,14 @@
         </div>
         <div class="card mb-3 comentarios">
             <h3 class="text-dark">Nuestros usuarios dicen...</h3>
-  <div class="row g-0"  th:each="calificacion: ${calificaciones}">
+  <div class="row g-0"  th:each="score: ${calificaciones}">
     <div class="col-md-1 contenedorImagenChef">
       <img src="../imagenes/chef.png" class="img-fluid rounded-start imagenChef" alt="...">
     </div>
     <div class="col-md-11">
       <div class="card-body">
-        <h5 class="card-title text-primary" th:text=${calificacion.usuario.nombre}></h5>
-        <p class="card-text" th:text=${calificacion.comentario}></p>
+        <h5 class="card-title text-primary" th:text=${score.users.nombre}></h5>
+        <p class="card-text" th:text=${score.comentario}></p>
       </div>
     </div>
   </div>

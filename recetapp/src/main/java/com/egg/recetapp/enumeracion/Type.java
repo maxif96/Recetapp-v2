@@ -1,6 +1,6 @@
 package com.egg.recetapp.enumeracion;
 
-public enum Tipo {
+public enum Type {
     
     VEGETARIANA("Vegetariana"),
     VEGANA("Vegana"),
@@ -17,7 +17,7 @@ public enum Tipo {
 
     private String nombre;
 
-    private Tipo(String nombre) {
+    private Type(String nombre) {
         this.nombre = nombre;
     }
 
