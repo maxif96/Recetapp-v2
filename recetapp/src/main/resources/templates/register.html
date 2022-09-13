@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/ingreso">Ingresar</a>
+                        <a class="nav-link" href="/login">Ingresar</a>
                     </li>
                 </ul>
             </div>
@@ -36,7 +36,7 @@
 
 <div class="l-form">
 
-    <form action="/registro" class="form" enctype="multipart/form-data"
+    <form action="/register" class="form" enctype="multipart/form-data"
           method="post">
         <h1 class="form_tittle">Registro</h1>
         <p class="link alert alert-danger" th:if="${error != null}" th:text="${error}"></p>
@@ -46,18 +46,18 @@
             <label class="form_label" for=""> Elige una photo </label></div>
 
         <div class="form_div">
-            <input class="form_input" name="nombre" placeholder="" type="text">
+            <input class="form_input" name="name" placeholder="" type="text">
             <label class="form_label" for="">Nombre</label>
         </div>
 
         <div class="form_div">
-            <input class="form_input" name="apodo" placeholder="" type="text">
+            <input class="form_input" name="nickName" placeholder="" type="text">
             <label class="form_label" for="">Apodo</label>
         </div>
 
         <div class="form_div">
             <select class="form-control" name="category">
-                <option selected th:each="cat : ${category}" th:text="${cat.getNombre()}" th:value="${cat}"></option>
+                <option selected th:each="cat : ${category}" th:text="${cat.getName()}" th:value="${cat}"></option>
             </select>
         </div>
 
@@ -68,13 +68,13 @@
         </div>
 
         <div class="form_div">
-            <input class="form_input" name="contrasena" placeholder="" type="password">
+            <input class="form_input" name="password" placeholder="" type="password">
             <label class="form_label" for="">Contraseña</label>
         </div>
 
         <input class="form_butom" type="submit" value="Registrarme">
 
-        <p>¿Ya tienes una cuenta? <a class="link " href="/ingreso"> Iniciar sesion</a></p>
+        <p>¿Ya tienes una cuenta? <a class="link " href="/login"> Iniciar sesion</a></p>
     </form>
 </div>
 <footer class="footer bg-dark">

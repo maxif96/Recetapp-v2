@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,10 +23,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent" th:if="${session.isEmpty()}">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item d-flex">
-                <a class="nav-link align-self-center text-white" href="/registro">Registrarme</a>
+                <a class="nav-link align-self-center text-white" href="/register">Registrarme</a>
               </li>
               <li class="nav-item d-flex">
-                <a class="nav-link align-self-center text-white" href="/ingreso">Ingresar</a>
+                <a class="nav-link align-self-center text-white" href="/login">Ingresar</a>
               </li>
             </ul>
           </div>
@@ -37,8 +37,8 @@
                 🍽️
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="/users/miperfil">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="/recipe/listarPorUsuario">Ver mis recetas</a></li>
+                <li><a class="dropdown-item" href="/users/profile">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="/recipe/getByUser">Ver mis recetas</a></li>
                 <li><a class="dropdown-item" href="/recipe/">Ver todas las recetas</a></li>
               </ul>
             <li class="nav-item d-flex">
@@ -47,8 +47,8 @@
 
 
           </ul>
-          <form action="/recipe/listaRecetasPorNombre" class="d-flex" method="POST">
-            <input class="form-control me-2" type="text" name="nombre" placeholder="Buscar recipe">
+          <form action="/recipe/getRecipesByName" class="d-flex" method="POST">
+            <input class="form-control me-2" type="text" name="name" placeholder="Buscar receta">
             <button class="btn" type="submit" style="background-color:#E27227">Buscar</button>
           </form>
           </div>
@@ -65,8 +65,8 @@
                     <p class="lead mb-4">La App donde las recetas y los amantes de la cocina
                       se unen para conquistar paladares.</p>
                   <div>
-                      <a href="/registro" class="btn btn-primary mb-5">Registrate</a>
-                    <a href="/ingreso" class="btn btn-primary mb-5">Ingresar</a>
+                      <a href="/register" class="btn btn-primary mb-5">Registrate</a>
+                    <a href="/login" class="btn btn-primary mb-5">Ingresar</a>
                   </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
               <div class="content mx-auto px-4 my-5">
                 <img src="../imagenes/imagenRegistro-01.png" class="img-fluid rounded">
               </div>
-              <a href="/registro" class="btn col-lg-6 btnComenzar">Comenzar</a>
+              <a href="/register" class="btn col-lg-6 btnComenzar">Comenzar</a>
             </div>
             <div class="col-lg-6 d-flex">
               <div class="align-self-center my-5 px-4">
@@ -132,7 +132,7 @@
             </div>
             <div class="d-md-none">
               <input type="email" class="form-control mb-3" placeholder="Correo electrónico">
-              <a type="button" class="btn btn-light w-100" href="/registro">Contactar</a>
+              <a type="button" class="btn btn-light w-100" href="/register">Contactar</a>
             </div>
           </div>
 
