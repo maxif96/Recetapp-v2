@@ -4,7 +4,7 @@
 
 That is the home page, nice right?
 
-This project is about upload cooking recipes.
+This project is about cooking recipes.
 
 ## What you can do in this page?
 
@@ -13,7 +13,6 @@ This project is about upload cooking recipes.
 - **Upload photos** - You can upload photos you have taken to your recipes
 - **Comment recipes from others** - You can comment (and upload or delete those comments) and score from 1 to 5 stars (forks in this case)
 - **You will safe** - Your recipes and your account are protected with Spring Security, only you can delete or edit your profile, recipe or comments.
-- **You may be an administrator** - You can manage the web-site if you have ADMIN role.
 
 ## How can I access to the web-page locally?
 
