@@ -1,1 +1,1 @@
-# Recetapp-v2
+# Recetapp, a Spring MVC Web-page about recipes
