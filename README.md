@@ -17,7 +17,7 @@ This project is about upload cooking recipes.
 
 ## How can I access to the web-page locally?
 
-You must have installed a database and an enviroment to run Spring projects.
+You must have installed a management database system like MySQL and an IDE or some enviroment which run Spring projects.
 Then, create the database which must be called 'recetappdb' in this case.
 Next, you can run the project with Maven.
 Once done it, you will access to the following url: http//localhost:8080 
@@ -43,6 +43,11 @@ Or comment:
 ![image](https://user-images.githubusercontent.com/87986166/190046718-98782e0c-d108-4599-8383-ca7503041a7f.png)
 
 ![image](https://user-images.githubusercontent.com/87986166/190046773-59a508c8-1e2c-40fb-a7c8-797af9d595d7.png)
+
+You will able to see all your uploaded recipes:
+
+![image](https://user-images.githubusercontent.com/87986166/190047374-15656e2b-d7dc-4673-a1b0-d0a7363cf2cf.png)
+
 
 Technologies used for this project: 
 
