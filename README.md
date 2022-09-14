@@ -6,7 +6,7 @@ That is the home page, nice right?
 
 This project is about cooking recipes.
 
-## What you can do in this page?
+## What I can do in this page?
 
 - **Create an user** - You can have a profile with a picture of you and your data, you can also update or delete it.
 - **Upload recipes** - A bit obvious. You can upload your favorite recipes, as well as edit or delete them.
@@ -54,3 +54,4 @@ Technologies used for this project:
 ![](https://img.shields.io/badge/SpringSecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white) ![](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white) ![](https://img.shields.io/badge/Thymeleaf-6DB33F?style=for-the-badge&logo=thymeleaf&logoColor=white)
 ![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white) ![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) ![](https://img.shields.io/badge/Spring-MVC-59666C?style=for-the-badge&logo=spring&logoColor=white)
 
+Thanks to get to here, I hope you had a deliiiicious time. 
