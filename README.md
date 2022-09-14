@@ -54,4 +54,7 @@ Technologies used for this project:
 ![](https://img.shields.io/badge/SpringSecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white) ![](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white) ![](https://img.shields.io/badge/Thymeleaf-6DB33F?style=for-the-badge&logo=thymeleaf&logoColor=white)
 ![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white) ![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) ![](https://img.shields.io/badge/Spring-MVC-59666C?style=for-the-badge&logo=spring&logoColor=white)
 
+
+
+
 Thanks to getting here, I hope you had a deliiiicious time. 
